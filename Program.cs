@@ -11,7 +11,7 @@ namespace Actividad_5._3
         static void Main(string[] args)
         {
             //Inicializacion de variables y contadores
-            int A, B, Tot=0, V = 0, Option = 0;
+            int A, B, Tot=0, V = 0, min, MAX, Option = 0;
             bool Banderita = true;
             //invocacion de clase externo para realizar operaciones y simplificando código
             Funciones funcI = new Funciones();
@@ -20,6 +20,7 @@ namespace Actividad_5._3
             Console.WriteLine("Precione el número 1 para empezar a realizar la actividad N°1");
             Console.WriteLine("Precione el número 2 para empezar a realizar la actividad N°2");
             Console.WriteLine("Precione el número 3 para empezar a realizar la actividad N°3");
+            Console.WriteLine("Precione el número 4 para empezar a realizar la actividad N°4");
             Option = Convert.ToInt16(Console.ReadLine());
             switch (Option) {
                 case 1:
@@ -33,7 +34,7 @@ namespace Actividad_5._3
                     break;
                 case 2:
                     Console.Clear();
-                    Console.WriteLine("Bienvenido a la Actividad N°2, iteracion con MIENTRAS o WHILE y BANDERA");
+                    Console.WriteLine("Bienvenido a la Actividad N°2, iteracion con MIENTRAS o WHILE con BANDERA");
                     while (Banderita == true){
                         Console.WriteLine("Ingrese la nota de un estudiante \nPara salir, precione un valor por debajo del cero");
                         Option = Convert.ToInt16(Console.ReadLine());
@@ -53,8 +54,9 @@ namespace Actividad_5._3
                     break;
                 case 3:
                     Console.Clear();
-                    int MAX = 0, min = 101;
-                    Console.WriteLine("Bienvenido a la Actividad N°3, iteracion con MIENTRAS o WHILE y CENTINELA");
+                    MAX = 0;
+                    min = 101;
+                    Console.WriteLine("Bienvenido a la Actividad N°3, iteracion con MIENTRAS o WHILE con CENTINELA");
                     Console.WriteLine("Ingrese un número entre 0 y 100 \nPara salir, precione un valor igual a -1");
                     Option = Convert.ToInt16(Console.ReadLine());
                     while (Option !=-1)
@@ -76,6 +78,39 @@ namespace Actividad_5._3
                         Console.WriteLine("No se escribío valores para registrar");
                     }
                     break;
+
+                case 4:
+                    Console.Clear();
+                    Console.WriteLine("Bienvenido a la Actividad N°4, iteracion con PARA o FOR");
+                    Console.WriteLine("Ingrese un número entre 0 y 100 hasta llegar a los 30 números ingreado");
+                    Option = Convert.ToInt16(Console.ReadLine());
+                    min = 101;
+                    MAX = 0;
+                    for (V=0;V<30;V++){
+                        //Se verifica la magnitud del número
+                        if (Option < min)
+                        {
+                            min = Option;
+                        }
+                        if (Option > MAX)
+                        {
+                            MAX = Option;
+                        }
+                        Console.WriteLine($"número N°{V}, Ingrese un número entre 0 y 100");
+                        Option = Convert.ToInt16(Console.ReadLine());
+                    }
+                    //verificacion de datos finales
+                    if (MAX != 0 && min != 101)
+                    {
+                        Console.WriteLine($"El número de maximo valor es {MAX} y el número de menor valor es {min}");
+                    }
+                    else
+                    {
+                        Console.WriteLine("No se escribío valores para registrar");
+                    }
+                    Console.WriteLine($"El promedio de los {V} de un total de {funcI.Promedio(Tot, V)}");
+                    break;
+
             }
             Console.WriteLine("Precione una tecla para finalizar");
             Console.ReadKey();
